@@ -33,10 +33,9 @@ export const taskReducer = (state: TaskInTodoListType = initialState, action:Act
             return {...state,[action.todoListId]: tasks}
         }
         case 'ADD_TASK' : {
-            const newTask = {id:action.id, title: action.title, completed: false }
-            console.log(state)
-            console.log(state[action.todoListId])
-            const newTodoList = [...state[action.todoListId], newTask]
+            const newTask: TaskType = {id:action.id, title: action.title, completed: false }
+            const tasks = state[action.todoListId] || [];
+            const newTodoList = [...tasks, newTask];
             return {...state, [action.todoListId]: newTodoList}
         }
         case 'REMOVE_TASK' : {
